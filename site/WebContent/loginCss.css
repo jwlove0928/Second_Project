@@ -1,0 +1,71 @@
+@charset "EUC-KR";
+.login {
+	font-size: 50px;
+	text-shadow: 0 0 10px #666;
+	color: #fff;
+	margin: 0 auto;
+	text-align: center;
+	text-transform: capitalize;
+	font-family: "¸¼Àº °íµñ";
+	font-style: italic;
+}
+body {
+	font-family: "¸¼Àº °íµñ";
+	font-size: 12px;
+}
+.form{
+	width: 498px;
+	height: 300px;
+	border-radius: 25px;
+	boder: 5px; double #999;
+	margin: 30px auto;
+}
+.form2{
+	width:380px;
+	min-width: 320px;
+	height: 200px;
+	margin: 60px auto;
+	margin-left: 40px;
+}
+.form3{
+	float: left;
+	/* background: #f00; */
+}
+.form4{
+	padding: 0px 0px 0px 70px;
+}
+#top{
+	width: 600px;
+	height: 500px;
+	margin: 0 auto;
+}
+.clear{
+	clear: both;
+}
+input[type="submit"]{
+	float: left;
+	height: 60px;
+	display : block;
+	background: #FFBB00;
+	border-radius: 5px;
+	border: none;
+	font-family: "¸¼Àº °íµñ";
+}
+input[type="button"]{
+	height: 30px;
+	background: gray;
+	border-radius: 5px;
+	width: 140px;
+	font-family: "¸¼Àº °íµñ";
+	margin-top: 10px;
+	margin-right: 20px;
+}
+input[type="checkbox"]{
+	margin-top: 20px;
+}
+#user{
+	width: 200px;
+	height: 25px;
+	font-size: 15px;
+	font-weight: bold;
+}
