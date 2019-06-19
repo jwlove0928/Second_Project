@@ -126,5 +126,4 @@ public class membershipDTO {
 	public void setTel3(int tel3) {
 		this.tel3 = tel3;
 	}
-	
 }

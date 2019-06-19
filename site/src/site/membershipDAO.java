@@ -6,17 +6,17 @@ import java.sql.PreparedStatement;
 
 public class membershipDAO {
 
-	public int insert(membershipDTO dto) {
-		int res = 0;
+	public void insert(membershipDTO dto) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url= "jdbc:mysql://localhost:3306/site";
 			String user = "root";
 			String password = "1234";
-			
+			System.out.println("test1");
 			Connection con = DriverManager.getConnection(url,user,password);
 			
 			String sql = "insert into membership values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			System.out.println("test2");
 			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getName());
@@ -37,12 +37,10 @@ public class membershipDAO {
 			ps.setInt(16, dto.getTel2());
 			ps.setInt(17, dto.getTel3());
 			
-			res = ps.executeUpdate();
-			return res;
-			
+			ps.executeUpdate();
+			System.out.println("test3");			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return res;
 	}
 }

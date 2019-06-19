@@ -13,9 +13,10 @@
 		
 		<%
 			membershipDAO dao = new membershipDAO();
-			dao.insert(dto);
+			dao.insert(dto); 
 		%>
+			<%= dto %>
 			아이디 : <%= dto.getId() %>
-			비밀번호<%= dto.getPw() %>
+			비밀번호 : <%= dto.getPw() %>
 		</body>
 </html>
