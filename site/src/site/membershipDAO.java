@@ -3,6 +3,7 @@ package site;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class membershipDAO {
 
@@ -42,5 +43,33 @@ public class membershipDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public membershipDTO select(membershipDTO dto) {
+		
+		membershipDTO dto2 = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url= "jdbc:mysql://localhost:3306/site";
+			String user = "root";
+			String password = "1234";
+			System.out.println("test1");
+			Connection con = DriverManager.getConnection(url,user,password);
+			
+			String sql = "select * from membership where id=?";
+			System.out.println("test2");
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				String id = rs.getString(4);
+				dto.setId(id);
+			}
+			System.out.println("test3");			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto2;
 	}
 }

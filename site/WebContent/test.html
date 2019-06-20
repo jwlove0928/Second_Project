@@ -88,6 +88,26 @@ function joincheck() {
 		document.write_member.submit();
 	}
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#idcheck").on("click", function () {
+			var d = $(this).serialize();
+			$.ajax({
+				type: "POST",
+				url : "idcheck.jsp",
+				data : d,
+				success: function (result) {
+					if($.trim(result) == "YES"){
+						alert("사용가능합니다.");
+					}else{
+						alert("아이디가 중복됩니다. 다시 입력해주세요");
+					}
+				}
+			});
+		});
+	});
+</script>
 </head>
 <body>
 	<div align="center">
@@ -121,7 +141,7 @@ function joincheck() {
 											<th>아이디</th>
 											<td><input type="text" name="id"
 												placeholder="영문/숫자 10~12자"> <input type="button"
-												onclick="idcheck()" name="idcheck" value="중복체크"></td>
+												onclick="idcheck()" name="idcheck" id="idcheck" value="중복체크"></td>
 										</tr>
 
 										<tr>
