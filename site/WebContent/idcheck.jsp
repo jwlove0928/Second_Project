@@ -12,18 +12,16 @@
 	</head>
 		<body>
 			<%
-				String str = "";
-				
 				String inputId = request.getParameter("id");
 				
 				membershipDAO dao = new membershipDAO();
 				
 				String result1 = dao.select(inputId);
 				
-				if(result1.equals(inputId)){
-					str = "YES";
+				if(result1.equals("YES")){
+					out.write("YES");
 				}else{
-					str = "NO";
+					out.write("NO");
 				}
 			%>
 		</body>

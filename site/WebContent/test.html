@@ -98,10 +98,14 @@ function joincheck() {
 				url : "idcheck.jsp",
 				data : d,
 				success: function (result) {
-					if($.trim(result) == "YES"){
+
+					var data = result.trim()
+
+					if(data == "YES"){
 						alert("사용가능합니다.");
 					}else{
 						alert("아이디가 중복됩니다. 다시 입력해주세요");
+						alert(data);
 					}
 				}
 			});
