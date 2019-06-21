@@ -13,11 +13,9 @@ public class membershipDAO {
 			String url= "jdbc:mysql://localhost:3306/site";
 			String user = "root";
 			String password = "1234";
-			System.out.println("test1");
 			Connection con = DriverManager.getConnection(url,user,password);
 			
 			String sql = "insert into membership values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			System.out.println("test2");
 			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getName());
@@ -39,14 +37,14 @@ public class membershipDAO {
 			ps.setInt(17, dto.getTel3());
 			
 			ps.executeUpdate();
-			System.out.println("test3");			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public membershipDTO select(membershipDTO dto) {
+	public String select(String inputId) {
 		
-		membershipDTO dto2 = null;
+		String result = "";
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url= "jdbc:mysql://localhost:3306/site";
@@ -59,17 +57,17 @@ public class membershipDAO {
 			System.out.println("test2");
 			
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getId());
+			ps.setString(1, inputId);
 			
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				String id = rs.getString(4);
-				dto.setId(id);
+			if(rs.next()) {
+				result = "YES";
+			}else {
+				result = "NO";
 			}
-			System.out.println("test3");			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return dto2;
+		return result;
 	}
 }
