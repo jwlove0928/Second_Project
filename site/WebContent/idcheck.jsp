@@ -2,27 +2,20 @@
 <%@page import="site.membershipDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-		<jsp:useBean id="dto" class="site.membershipDTO"></jsp:useBean>
-		<jsp:setProperty property="*" name="dto"/>
-	</head>
-		<body>
 			<%
+				String str = "";
+				
 				String inputId = request.getParameter("id");
 				
 				membershipDAO dao = new membershipDAO();
 				
-				String result1 = dao.select(inputId);
+				membershipDTO dto = dao.select(inputId);
 				
-				if(result1.equals("YES")){
-					out.write("YES");
+				if(dto == null){
+					str = ",YES";
+					out.write(str);
 				}else{
-					out.write("NO");
+					str = ",NO";
+					out.write(str);
 				}
 			%>
-		</body>
-</html>

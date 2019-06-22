@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="style_ms.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function pwcheck() { //비밀번호 맞는 유무 확인 메소드
 		if (write_member.pw.value != write_member.pwck.value) {
@@ -80,7 +79,7 @@ function DaumPostcode() {
 </script>
 <script type="text/javascript">
 function joincheck() {
-		if(write_member.pw.value != write_member.pwck.value){
+		if(write_member.pw.value != write_member.pwck.value){ //비밀번호 입력값과 확인값이 맞지않으면 회원가입불가능.
 			alert("비밀번호가 일치하지 않습니다. 다시 가입해주세요");
 			location.href="test.html";
 			return;
@@ -90,18 +89,19 @@ function joincheck() {
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
+
 	$(function () {
-		$("#idcheck").on("click", function () {
+		$("#idcheck").click( function () {
 			var d = $(this).serialize();
 			$.ajax({
-				type: "POST",
 				url : "idcheck.jsp",
 				data : d,
 				success: function (result) {
-
-					var data = result.trim()
-
-					if(data == "YES"){
+					var data = new String(result);
+					var data2 = data.split(",");
+					alert(data2[1]);
+					
+					if(data2[1] == "YES"){
 						alert("사용가능합니다.");
 					}else{
 						alert("아이디가 중복됩니다. 다시 입력해주세요");
@@ -145,7 +145,7 @@ function joincheck() {
 											<th>아이디</th>
 											<td><input type="text" name="id"
 												placeholder="영문/숫자 10~12자"> <input type="button"
-												onclick="idcheck()" name="idcheck" id="idcheck" value="중복체크"></td>
+												name="idcheck" id="idcheck" value="중복체크"></td>
 										</tr>
 
 										<tr>

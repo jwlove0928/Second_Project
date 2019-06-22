@@ -5,15 +5,22 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import sun.security.jca.GetInstance;
+
 public class membershipDAO {
+	Connection con;
+	
+	DBConnectionMgr mgr;
 
 	public void insert(membershipDTO dto) {
+		
+		mgr = DBConnectionMgr.getInstance();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url= "jdbc:mysql://localhost:3306/site";
 			String user = "root";
 			String password = "1234";
-			Connection con = DriverManager.getConnection(url,user,password);
+			con = mgr.getConnection();
 			
 			String sql = "insert into membership values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
@@ -39,11 +46,14 @@ public class membershipDAO {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			mgr.freeConnection(con);
 		}
 	}
-	public String select(String inputId) {
+	public membershipDTO select(String inputId) {
 		
-		String result = "";
+		mgr = DBConnectionMgr.getInstance();
+		membershipDTO dto = null;
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -51,7 +61,7 @@ public class membershipDAO {
 			String user = "root";
 			String password = "1234";
 			System.out.println("test1");
-			Connection con = DriverManager.getConnection(url,user,password);
+			con = mgr.getConnection();
 			
 			String sql = "select * from membership where id=?";
 			System.out.println("test2");
@@ -61,13 +71,49 @@ public class membershipDAO {
 			
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				result = "YES";
-			}else {
-				result = "NO";
+				dto = new membershipDTO();
+				String name = rs.getString(1);
+				int ssn = rs.getInt(2);
+				int ssn2 = rs.getInt(3);
+				String id = rs.getString(4);
+				int pw = rs.getInt(5);
+				int pwck = rs.getInt(6);
+				String pwhint = rs.getString(7);
+				String pwan = rs.getString(8);
+				String mail = rs.getString(9);
+				String mail2 = rs.getString(10);
+				String address = rs.getString(11);
+				String address2 = rs.getString(12);
+				int postcode = rs.getInt(13);
+				String address3 = rs.getString(14);
+				int tel = rs.getInt(15);
+				int tel2 = rs.getInt(16);
+				int tel3 = rs.getInt(17);
+				
+				dto.setName(name);
+				dto.setSsn(ssn);
+				dto.setSsn2(ssn2);
+				dto.setId(id);
+				dto.setPw(pw);
+				dto.setPwck(pwck);
+				dto.setPwhint(pwhint);
+				dto.setPwan(pwan);
+				dto.setMail(mail);
+				dto.setMail2(mail2);
+				dto.setAddress(address);
+				dto.setAddress2(address2);
+				dto.setPostcode(postcode);
+				dto.setAddress3(address3);
+				dto.setTel(tel);
+				dto.setTel2(tel2);
+				dto.setTel3(tel3);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			mgr.freeConnection(con);
 		}
-		return result;
+		return dto;
 	}
 }

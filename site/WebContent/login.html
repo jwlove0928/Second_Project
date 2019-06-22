@@ -3,19 +3,56 @@
 <meta charset="UTF-8">
 <title>로그인 화면</title>
 <link rel="stylesheet" type="text/css" href="loginCss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#logingo").click(function () {
+			
+			var d = $(this).serialize();
+			
+			var loginid = $("#loginid").val();
+			var loginpw = $("#loginpw").val();
+			
+			if(loginid == ""){
+				
+				alert("아이디를 입력해주세요");
+				$("#loginid").focus();
+				return;
+			}
+			
+			if(loginpw == ""){
+				
+				alert("비밀번호를 입력해주세요");
+				$("#loginpw").focus();
+				return;
+			}
+			$.ajax({
+				url : "login.jsp",
+				data : d,
+				success : function (result) {
+					alert("ajax 성공");
+					$("#check").text(result);
+					$(document).ready();
+					alert($("#check").text());
+				} 
+			});
+		});
+	});
+</script>
 </head>
 <body>
-	<form>
+	<input type="hidden" id = "check" value="값 가져오기 실패">
+	<form action="login.jsp">
 	  <div id="top">
 	   <h1 class="login">로그인</h1>
 	   <div class="form">
 	    <div class="form2">
 	     <div class="form3">
-	      <input type="text" id="user" placeholder="아이디 입력">
+	      <input type="text" name= "loginid" id="loginid" placeholder="아이디 입력">
 	      <div class="clear"></div>
-	      <input type="password" id="user" placeholder="비밀번호 입력">
+	      <input type="password" name ="loginpw" id="loginpw" placeholder="비밀번호 입력">
 	     </div>
-		 <input type="submit" value="로그인하기">
+		 <input type="submit" id="logingo" value="로그인하기">
 	     <div class="clear"></div>
 	     <div class="form4">
 	      <label><input type="checkbox">아이디 저장</label> <label><input
