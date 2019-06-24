@@ -6,8 +6,8 @@ public class membershipDTO {
 	private int ssn;
 	private int ssn2;
 	private String id;
-	private int pw;
-	private int pwck;
+	private String pw;
+	private String pwck;
 	private String pwhint;
 	private String pwan;
 	private String mail;
@@ -48,16 +48,16 @@ public class membershipDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getPw() {
+	public String getPw() {
 		return pw;
 	}
-	public void setPw(int pw) {
+	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	public int getPwck() {
+	public String getPwck() {
 		return pwck;
 	}
-	public void setPwck(int pwck) {
+	public void setPwck(String pwck) {
 		this.pwck = pwck;
 	}
 	public String getPwhint() {

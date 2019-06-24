@@ -8,41 +8,50 @@
 	$(function () {
 		$("#logingo").click(function () {
 			
-			var d = $(this).serialize();
+			var d = $("#f").serialize();
 			
 			var loginid = $("#loginid").val();
 			var loginpw = $("#loginpw").val();
 			
 			if(loginid == ""){
-				
 				alert("아이디를 입력해주세요");
 				$("#loginid").focus();
-				return;
+				return false;
 			}
 			
 			if(loginpw == ""){
-				
 				alert("비밀번호를 입력해주세요");
 				$("#loginpw").focus();
-				return;
+				return false;
 			}
 			$.ajax({
 				url : "login.jsp",
 				data : d,
 				success : function (result) {
-					alert("ajax 성공");
-					$("#check").text(result);
-					$(document).ready();
-					alert($("#check").text());
+					var data = result.trim();
+					alert(data);
+					if(data == "아이디 혹은 비밀번호가 맞지않습니다."){
+						alert("아이디 혹은 비밀번호가 맞지않습니다.");
+						return false;
+					}
+					if(data == "로그인에 성공하셨습니다."){
+						alert("ajax 성공");
+						alert("로그인에 성공하셨습니다.");
+					}
 				} 
 			});
 		});
 	});
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function movigtest (){ //회원가입 창으로 이동
+		window.location.href="test.html";
+	}
+</script>
 </head>
 <body>
-	<input type="hidden" id = "check" value="값 가져오기 실패">
-	<form action="login.jsp">
+	<form action="login.jsp" id="f">
 	  <div id="top">
 	   <h1 class="login">로그인</h1>
 	   <div class="form">
@@ -58,7 +67,8 @@
 	      <label><input type="checkbox">아이디 저장</label> <label><input
 	       type="checkbox">보안접속</label>
 	      <div class="clear"></div>
-	      <label><input type="button" value="회원가입"></label> <label><input
+		  <label><input type="button" onclick="movigtest()" value="회원가입"></label> 
+		  <label><input
 	       type="button" value="아이디/비밀번호찾기"></label>
 	     </div>
 	    </div>

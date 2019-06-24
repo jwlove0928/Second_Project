@@ -9,13 +9,13 @@
 				
 				membershipDAO dao = new membershipDAO();
 				
-				membershipDTO dto = dao.select(inputId);
+				String id = dao.select(inputId);
 				
-				if(dto == null){
-					str = ",YES";
+				if(id == null){
+					str = "YES";
 					out.write(str);
 				}else{
-					str = ",NO";
+					str = "NO";
 					out.write(str);
 				}
 			%>

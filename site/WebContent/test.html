@@ -92,20 +92,19 @@ function joincheck() {
 
 	$(function () {
 		$("#idcheck").click( function () {
-			var d = $(this).serialize();
+			var d = $("#f").serialize();
 			$.ajax({
 				url : "idcheck.jsp",
 				data : d,
 				success: function (result) {
-					var data = new String(result);
-					var data2 = data.split(",");
-					alert(data2[1]);
+					var data = result.trim();
 					
-					if(data2[1] == "YES"){
+					if(data == "YES"){
 						alert("사용가능합니다.");
-					}else{
+						return false;
+					}if(data == "NO"){
 						alert("아이디가 중복됩니다. 다시 입력해주세요");
-						alert(data);
+						return false;
 					}
 				}
 			});
@@ -117,7 +116,7 @@ function joincheck() {
 	<div align="center">
 		<basefont size="6">
 		<table width="940">
-			<form action="membership.jsp" name="write_member" >
+			<form action="membership.jsp" name="write_member" id="f">
 				<tr>
 					<td>회원가입(사진)</td>
 				</tr>
