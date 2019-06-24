@@ -16,9 +16,9 @@ public class membershipDTO {
 	private String address2;
 	private int postcode;
 	private String address3;
-	private int tel;
-	private int tel2;
-	private int tel3;
+	private String tel;
+	private String tel2;
+	private String tel3;
 	
 	public membershipDTO() {
 		
@@ -108,22 +108,22 @@ public class membershipDTO {
 	public void setAddress3(String address3) {
 		this.address3 = address3;
 	}
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public int getTel2() {
+	public String getTel2() {
 		return tel2;
 	}
-	public void setTel2(int tel2) {
+	public void setTel2(String tel2) {
 		this.tel2 = tel2;
 	}
-	public int getTel3() {
+	public String getTel3() {
 		return tel3;
 	}
-	public void setTel3(int tel3) {
+	public void setTel3(String tel3) {
 		this.tel3 = tel3;
 	}
 }

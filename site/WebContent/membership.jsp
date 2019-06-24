@@ -18,5 +18,6 @@
 			<%= dto %>
 			아이디 : <%= dto.getId() %>
 			비밀번호 : <%= dto.getPw() %>
+			전화번호 : <%= dto.getTel() %>
 		</body>
 </html>
