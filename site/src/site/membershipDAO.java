@@ -111,6 +111,9 @@ public class membershipDAO {
 				pw = rs.getString("pw");
 				list.add(id);
 				list.add(pw);
+			}else {
+				list.add(id);
+				list.add(pw);
 			}
 			
 		} catch (Exception e) {
@@ -124,6 +127,7 @@ public class membershipDAO {
 		System.out.println(id);
 		System.out.println(pw);
 		System.out.println(check);
+		System.out.println(list.size());
 		return list;
 	}
 }
