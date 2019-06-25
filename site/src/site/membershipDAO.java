@@ -157,6 +157,11 @@ public class membershipDAO {
 			ps.setString(3, inputTel2);
 			ps.setString(4, inputTel3);
 			
+			System.out.println(inputName);
+			System.out.println(inputTel);
+			System.out.println(inputTel2);
+			System.out.println(inputTel3);
+			
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 				name = rs.getString("name");
@@ -167,6 +172,10 @@ public class membershipDAO {
 				list.add(tel);
 				list.add(tel2);
 				list.add(tel3);
+				System.out.println(name);
+				System.out.println(tel);
+				System.out.println(tel2);
+				System.out.println(tel3);
 				System.out.println("Test");
 			}else {
 				list.add(name);
