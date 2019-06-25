@@ -258,19 +258,26 @@ public class membershipDAO {
 			
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				id = rs.getString("name");
-				pwhint = rs.getString("pwhit");
+				id = rs.getString("id");
+				pwhint = rs.getString("pwhint");
 				pwan = rs.getString("pwan");
 				pw = rs.getString("pw");
 				list.add(id);
 				list.add(pwhint);
 				list.add(pwan);
 				list.add(pw);
+				System.out.println(list.size());
 			}else {
 				list.add(id);
 				list.add(pwhint);
 				list.add(pwan);
 				list.add(pw);
+				
+				System.out.println(id);
+				System.out.println(pwhint);
+				System.out.println(pwan);
+				System.out.println(pw);
+				System.out.println(list.size());
 			}
 			
 		} catch (Exception e) {

@@ -78,8 +78,8 @@ function DaumPostcode() {
 }
 </script>
 <script type="text/javascript">
-function joincheck() {
-		if(write_member.pw.value != write_member.pwck.value){ //비밀번호 입력값과 확인값이 맞지않으면 회원가입불가능.
+function joincheck() { //비밀번호 입력값과 확인값이 맞지않으면 회원가입불가능.
+		if(write_member.pw.value != write_member.pwck.value){ 
 			alert("비밀번호가 일치하지 않습니다. 다시 가입해주세요");
 			location.href="test.html";
 			return;
@@ -90,8 +90,8 @@ function joincheck() {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-	$(function () {
-		$("#idcheck").click( function () {
+	$(function () { //아이디 중복체크
+		$("#idcheck").click( function () { 
 			var d = $("#f").serialize();
 			$.ajax({
 				url : "idcheck.jsp",

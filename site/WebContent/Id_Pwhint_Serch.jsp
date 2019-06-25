@@ -11,7 +11,7 @@
 	
 	membershipDAO dao = new membershipDAO();
 	
-	ArrayList list = dao.Id_Mail_Serch(inputId, inputPwhint, inputPwan);
+	ArrayList list = dao.Id_Pwhint_Serch(inputId, inputPwhint, inputPwan);
 	String id = (String)list.get(0);
 	String pwhint = (String)list.get(1);
 	String pwan = (String)list.get(2);
