@@ -3,8 +3,8 @@ package site;
 public class membershipDTO {
 	
 	private String name;
-	private int ssn;
-	private int ssn2;
+	private String ssn;
+	private String ssn2;
 	private String id;
 	private String pw;
 	private String pwhint;
@@ -13,7 +13,7 @@ public class membershipDTO {
 	private String mail2;
 	private String address;
 	private String address2;
-	private int postcode;
+	private String postcode;
 	private String address3;
 	private String tel;
 	private String tel2;
@@ -29,16 +29,16 @@ public class membershipDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getSsn() {
+	public String getSsn() {
 		return ssn;
 	}
-	public void setSsn(int ssn) {
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
-	public int getSsn2() {
+	public String getSsn2() {
 		return ssn2;
 	}
-	public void setSsn2(int ssn2) {
+	public void setSsn2(String ssn2) {
 		this.ssn2 = ssn2;
 	}
 	public String getId() {
@@ -56,8 +56,8 @@ public class membershipDTO {
 	public String getPwhint() {
 		return pwhint;
 	}
-	public void setPwhint(String pwhint) {
-		this.pwhint = pwhint;
+	public void setPwhString(String pwhString) {
+		this.pwhint = pwhString;
 	}
 	public String getPwan() {
 		return pwan;
@@ -89,10 +89,10 @@ public class membershipDTO {
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-	public int getPostcode() {
+	public String getPostcode() {
 		return postcode;
 	}
-	public void setPostcode(int postcode) {
+	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
 	public String getAddress3() {

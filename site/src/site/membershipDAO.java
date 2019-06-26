@@ -27,8 +27,8 @@ public class membershipDAO {
 			
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getName());
-			ps.setInt(2, dto.getSsn());
-			ps.setInt(3, dto.getSsn2());
+			ps.setString(2, dto.getSsn());
+			ps.setString(3, dto.getSsn2());
 			ps.setString(4, dto.getId());
 			ps.setString(5, dto.getPw());
 			ps.setString(6, dto.getPwhint());
@@ -37,7 +37,7 @@ public class membershipDAO {
 			ps.setString(9, dto.getMail2());
 			ps.setString(10, dto.getAddress());
 			ps.setString(11, dto.getAddress2());
-			ps.setInt(12, dto.getPostcode());
+			ps.setString(12, dto.getPostcode());
 			ps.setString(13, dto.getAddress3());
 			ps.setString(14, dto.getTel());
 			ps.setString(15, dto.getTel2());
