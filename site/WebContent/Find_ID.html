@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아이디 찾기</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(function () {
+		$("#enter").click( function () { //이름 및 전화번호로 아이디 찾기
+			var d = $("#f").serialize();
+			$.ajax({
+				url : "Id_Tel_Serch.jsp",
+				data : d,
+				success : function (result) {
+					var data = result.trim();
+					
+					if(data == "NO"){
+						alert("정보가 틀렸습니다. 다시 입력해주세요");
+						return false;
+					}if(data != "NO"){
+						alert("회원님의 아이디는 " + data + " 입니다.");
+						return false;
+					}
+				}
+			});
+		});
+	});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(function () { //이름 및 이메일로 아이디 찾기
+		$("#enter2").click( function () {
+			var d = $("#f").serialize();
+			$.ajax({
+				url : "Id_Mail_Serch.jsp",
+				data : d,
+				success : function (result) {
+					var data = result.trim();
+					
+					if(data == "NO"){
+						alert("정보가 틀렸습니다. 다시 입력해주세요");
+						return false;
+					}if(data != "NO"){
+						alert("회원님의 아이디는 " + data + " 입니다.");
+						return false;
+					}
+				}
+			});
+		});
+	});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function () { //메일 select값 text필드에 가져오기
+		console.log("5");
+			$('select[name=mailaddress]').change(function() {
+				console.log("0");
+				if ($(this).val() == "1") {
+					console.log("1");
+					$('mail2').val("");
+					console.log("2");
+					$("mail2").attr("readonly", false);
+				} else {
+					console.log("3");
+					$('#mail2').val($(this).val());
+					console.log("4");
+					$("#mail2").attr("readonly", true);
+				}
+			});
+		});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(function () { //아이디 및 비밀번호 힌트로 비밀번호 찾기
+		$("#enter3").click( function () {
+			var d = $("#f").serialize();
+			$.ajax({
+				url : "Id_Pwhint_Serch.jsp",
+				data : d,
+				success : function (result) {
+					var data = result.trim();
+					
+					if(data == "NO"){
+						alert("정보가 틀렸습니다. 다시 입력해주세요");
+						return false;
+					}if(data != "NO"){
+						alert("회원님의 비밀번호는 " + data + " 입니다.");
+						window.location.href="login.html";
+					}
+				}
+			});
+		});
+	});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function moviglogin (){ //로그인 창으로 이동
+		window.location.href="loginPage.jsp";
+	}
+</script>
+<body>
+	<form action="IdSerch.jsp" name="IdSerch" id="f">
+		<font face="Yang Rounded">
+			<table width="1330px" height="430px" align="center" border="0">
+				<tr>
+					<td>
+						<table width="600px" align="center" border="0"
+						style="color: black; background-color: #F6F6F6; font-size: 20px;">
+							<tr>
+								<td>
+									<table width="750px" align="center" border="0";
+									style="background-color: white; margin-top: 3%">
+										<tr>
+											<td align="center"><img src="" height="30px">
+											</td>
+											<td>아이디 찾기</td>
+											<td><div id = "sub_title">| 회원정보에 등록한 정보로 인증</div></td>
+											<td width="300px"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						<tr>
+							<td>
+								<table width="800px" height="300px" align="center"
+								style="border: dotted 5px none; margin-top: 4%">
+									<tr>
+										<td>
+											<table width="300px" height="30px" border="0"
+											style="margin-top: 3%; color : black; font-size: 18px;">
+												<tr>
+													<td>&nbsp;&nbsp; <img src="" height="30px">
+													</td>
+													<td>&nbsp;이름, 핸드폰번호로 찾기</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
+											<table width="380px" height="70px" align="center" border="0"
+											style="font-size: 16px;">
+												<tr>
+													<td>이름</td>
+													<td><input type="text" name="name"></td>
+												</tr>
+												<tr>
+													<td>휴대폰</td>
+													<td><select name="tel">
+														<option value="010" selected="selected">010</option>
+														<option value="011">011</option>
+														<option value="016">016</option>
+														<option value="017">017</option>
+													</select> - <input type="text" name="tel2" style="width : 70px">
+													- <input type="text" name="tel3" style="width: 70px">
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
+											<table width="140px" height="10px" border="0"
+											style="margin-top: 2%;" align="center">
+												<tr>
+													<td>
+													<input type="button" name="enter" value="  찾기  " id="enter" align="center"
+													style="cursor: pointer; background: white; color: black; border-color: black;">
+													</td>
+													<td><input type="button" name="cancle" onclick = "moviglogin()" value="  취소  " align="center"
+													style="cursor: pointer; background: white; color: black; border-color: black;">
+													</td>
+												</tr>
+											</table>
+										</td>
+									
+									<tr>
+										<td>
+											<table width="300px" height="20px" border="0"
+											style="margin-top: 3%; font-size: 18px;">
+											<br>
+											<br>
+												<tr>
+													<td>&nbsp;&nbsp; <img src=""
+													height="30px">
+													</td>
+														<td>&nbsp;&nbsp; <img src=""
+														height="30px">
+														</td>
+														<td>&nbsp;이름, 이메일로 찾기</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									
+									<td>
+										<table width="380px" height="70px" bordero="0"
+										align="center" style="font-size: 16px;">
+											<tr>
+												<td>이름</td>
+												<td><input type="text" name="name2"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center;">e-mail&nbsp;</td>
+												<td><input type="text" id="mail" name="mail" style="width: 100px"> @
+												<input type="text" id="mail2" name="mail2" style="width: 80px"> 
+												<select id="mailaddress" name="mailaddress">
+													<option value="1" selected="selected">직접입력</option>
+													<option value="daum.net">daum.net</option>
+													<option value="naver.com">naver.com</option>
+													<option value="gmail.com">gmail.com</option>
+													<option value="hanmail.net">hanmail.net</option>
+													<option value="nate.com">nate.com</option>
+													<option value="msn.com">msn.com</option>
+												</select></td>
+											</tr>
+										</table>
+									</td>
+									
+									<tr>
+										<td>
+											<table width="140px" height="10px" border="0"
+											style="margin-top: 2%" align="center">
+											<tr>
+												<td>
+												<input type="button" name="enter2" id="enter2" value="  찾기  " align="center"
+												style="cursor: pointer; background: white; color: black; border-color: black;">
+												</td>
+												<td>
+												<input type="button" name="cancle2" onclick = "moviglogin()" value="  취소  " align="center"
+												style="cursor: pointer; background: white; color: black; border-color: black;">
+																</td>
+															</tr>
+													</table>
+												<br>
+											</td>
+										</tr>
+									</table>
+									<tr>
+				<tr>
+					<td>
+						<table width="600px" align="center" border="0"
+						style="color: black; background-color: #F6F6F6; font-size: 20px;">
+							<tr>
+								<td>
+									<table width="750px" align="center" border="0";
+									style="background-color: white; margin-top: 3%">
+										<tr>
+											<td align="center"><img src="" height="30px">
+											</td>
+											<td>비밀번호 찾기</td>
+											<td><div id = "sub_title">| 회원정보에 등록한 정보로 인증</div></td>
+											<td width="300px"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<td>
+								<table width="800px" height="300px" align="center"
+								style="border: dotted 5px none; margin-top: 4%">
+									<tr>
+										<td>
+											<table width="300px" height="30px" border="0"
+											style="margin-top: 3%; color : black; font-size: 18px;">
+												<tr>
+													<td>&nbsp;&nbsp; <img src="" height="30px">
+													</td>
+													<th>&nbsp;아이디, 비밀번호힌트로 찾기</th>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
+											<table width="380px" height="70px" align="center" border="0"
+											style="font-size: 16px;">
+												<tr>
+													<th>아이디</th>
+													<td><input type="text" name="id" id="id"></td>
+												</tr>
+												<tr>
+											<th>비밀번호 힌트 질문</th>
+											<td><select name="pwhint" id="pwhint" size="1" class="select">
+													<option value="0">선택하세요</option>
+													<option value="1">졸업한 초등학교 이름은?</option>
+													<option value="2">제일 친한 친구의 이름은?</option>
+													<option value="3">아버지 성함은?</option>
+													<option value="4">어머니 성함은?</option>
+													<option value="5">어릴적 내 별명은?</option>
+													<option value="6">가장 아끼는 물건은?</option>
+													<option value="7">좋아하는 동물은?</option>
+													<option value="8">좋아하는 색깔은?</option>
+													<option value="9">좋아하는 음식은?</option>
+											</select>
+										</tr>
+
+										<tr>
+											<th>답변</th>
+											<td><input type="text" name="pwan" id="pwan"></td>
+										</tr>
+											</table>
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
+											<table width="140px" height="10px" border="0"
+											style="margin-top: 2%;" align="center">
+												<tr>
+													<td>
+													<input type="button" name="enter3" value="  찾기  " id="enter3" align="center"
+													style="cursor: pointer; background: white; color: black; border-color: black;">
+													</td>
+													<td><input type="button" name="cancle3" onclick = "moviglogin()" value="  취소  " align="center"
+													style="cursor: pointer; background: white; color: black; border-color: black;">
+													</td>
+												</tr>
+											</table>
+										</td>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</font>
+	</form>
+</body>
+</HTML> 

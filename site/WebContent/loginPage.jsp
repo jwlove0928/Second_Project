@@ -43,8 +43,10 @@
 			});
 		});
 		
-		var ss = "<%=(String)session.getAttribute("remember")%>" //세션값 가져오기
+		var ss = "<%=(String)session.getAttribute("rememberId")%>" //세션값 가져오기
+		var ss1 = "<%=(String)session.getAttribute("sessionId")%>" //세션값 가져오기
 		alert(ss);
+		alert(ss1);
 		if(ss != "null"){
 			alert("세션있다");
 			$("#loginid").val(ss);
@@ -59,7 +61,7 @@
 		window.location.href="test.html";
 	}
 	function movingfindId() { //아아디/비밀번호 찾기 창으로 이동
-		window.location.href="findId.html";
+		window.location.href="Find_ID.html";
 	}
 </script>
 </head>

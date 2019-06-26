@@ -89,6 +89,7 @@ public class membershipDAO {
 		
 		String id = null;
 		String pw = null;
+		String name = null;
 		mgr = DBConnectionMgr.getInstance();
 		
 		try {
@@ -109,11 +110,14 @@ public class membershipDAO {
 			if(rs.next()) {
 				id = rs.getString("id");
 				pw = rs.getString("pw");
+				name = rs.getString("name");
 				list.add(id);
 				list.add(pw);
+				list.add(name);
 			}else {
 				list.add(id);
 				list.add(pw);
+				list.add(name);
 			}
 			
 		} catch (Exception e) {
@@ -266,18 +270,11 @@ public class membershipDAO {
 				list.add(pwhint);
 				list.add(pwan);
 				list.add(pw);
-				System.out.println(list.size());
 			}else {
 				list.add(id);
 				list.add(pwhint);
 				list.add(pwan);
 				list.add(pw);
-				
-				System.out.println(id);
-				System.out.println(pwhint);
-				System.out.println(pwan);
-				System.out.println(pw);
-				System.out.println(list.size());
 			}
 			
 		} catch (Exception e) {
